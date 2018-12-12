@@ -1,0 +1,47 @@
+//https://www.geeksforgeeks.org/array-rotation/
+//https://www.programcreek.com/2015/03/rotate-array-in-java/
+/* Rotate an array of n elements to the right by k steps.
+For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4]. How many different ways do you know to solve this problem?*/
+
+import java.util.Arrays;
+
+public class RotateArray {
+
+   public static void main(String []args) {
+      
+        //int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        // int[] arr = {};
+        // int[] arr = null;
+        int[] arr = {1, 2};
+        System.out.println("Original array = "+Arrays.toString(arr));
+        int[] result = rotateArr(arr, 9);//left rotate
+        System.out.println("Rotated Array = "+Arrays.toString(result));
+   }
+   
+   public static int[] rotateArr(int[] arr, int num){
+       if(arr == null || arr.length <= 1 || num < 0){
+           return arr;
+       }
+       if(num > arr.length){
+           num = num % arr.length;
+       }
+       
+       rotate(arr, 0, num-1);
+    //   System.out.println("1st = "+Arrays.toString(arr));
+       rotate(arr,num, arr.length-1);
+    //   System.out.println("2nd = "+Arrays.toString(arr));
+       rotate(arr,0,arr.length-1);
+    //   System.out.println("3rd = "+Arrays.toString(arr));
+       return arr;
+   }
+   
+   static void rotate(int[] arr, int start, int end){
+       while(end >= start){
+           int temp = arr[start];
+           arr[start] = arr[end];
+           arr[end] = temp;
+           start++;
+           end--;
+       }
+   }
+}
