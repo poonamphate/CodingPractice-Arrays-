@@ -1,0 +1,63 @@
+//https://www.geeksforgeeks.org/given-a-sorted-and-rotated-array-find-if-there-is-a-pair-with-a-given-sum/
+/* 
+Given a sorted and rotated array, find if there is a pair with a given sum
+Input: arr[] = {11, 15, 6, 8, 9, 10}, x = 16
+Output: true
+There is a pair (6, 10) with sum 16
+*/
+
+public class SumInSortedRotatedArray{
+    public static void main(String[] args){
+        int[] arr = {11, 15, 5, 6, 8, 9, 10};
+        int sum = 16;
+        
+        int result = findSum(arr, sum);
+        System.out.println("count = "+result);
+    }
+    
+    static int findSum(int[] arr, int sum){
+        if(arr == null || arr.length ==0){
+            return 0;
+        }
+        
+        int i;
+        
+        for(i = 0 ; i < arr.length; i++){
+            if(arr[i] > arr[i+1]){
+                break;
+            }
+        }
+        int largest = i;
+        int smallest = (i+1)%arr.length;
+        
+        int count = 0;
+        
+        while(smallest != largest){
+            if(arr[smallest] + arr[largest] == sum){
+                count++;
+                
+                System.out.println("num1 = "+arr[smallest]+"; num2 = "+arr[largest]+"; at index "+smallest+" and "+largest+" resp")
+                ;
+                
+                if(smallest == (largest - 1 + arr.length)%arr.length){
+                    System.out.println("count = "+count);
+                    return count;
+                }
+                
+                smallest = (smallest + 1)%arr.length;
+                largest = (largest - 1 + arr.length)%arr.length;
+                
+            }
+            
+            else if(arr[smallest] + arr[largest] > sum){
+                largest = (arr.length+largest - 1)%arr.length;
+            }
+            
+            else {
+                smallest = (smallest + 1)%arr.length;
+            }
+        }
+        
+        return count;
+    }
+}
