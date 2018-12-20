@@ -1,0 +1,57 @@
+//https://www.geeksforgeeks.org/rearrange-array-arri-arrj-even-arri/
+/*
+Given an array of n elements. Our task is to write a program to rearrange the array such that 
+elements at even positions are greater than all elements before it 
+and elements at odd positions are less than all elements before it
+
+For example,
+Input : arr[] = {1, 2, 3, 4, 5, 6, 7}
+Output : 4 5 3 6 2 7 1
+*/
+
+import java.util.Arrays;
+
+public class RearrangeArray {
+
+   public static void main(String []args) {
+      
+       int[] arr = {1, 2, 1, 4, 5, 6, 8, 8};
+       rearrangeArr(arr);
+    //   System.out.println(Arrays.toString(arr));
+      
+   }
+   
+   static void rearrangeArr(int[] arr){
+       int n = arr.length;
+       
+       int[] temp = new int[n];
+       
+       for(int i = 0; i<n; i++){
+           temp[i] = arr[i];
+       }
+    //   System.out.println(Arrays.toString(temp));
+       
+        Arrays.sort(temp);
+        System.out.println(Arrays.toString(temp));
+       
+        int even = n/2;
+        System.out.println("even no = "+even);
+        
+        int odd = n - even;
+        System.out.println("odd no = "+odd);
+        
+        int j = odd-1;
+        
+        for(int i = 0; i<n; i+=2){
+           arr[i] = temp[j];
+           j--;
+       }
+       
+       j = odd;
+       for(int i = 1; i < n; i+=2){
+           arr[i] = temp[j];
+           j++;
+       }
+       System.out.println(Arrays.toString(arr));
+   }
+}
