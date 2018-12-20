@@ -6,7 +6,7 @@ The order of all other elements should be same. Expected time complexity is O(n)
 
 import java.util.Arrays;
 
-public class MyFirstJavaProgram {
+public class MoveZerosToEnd {
     
    public static void main(String []args) {
       int[] arr = {1, 2, 0, 0, 0, 3, 6};
