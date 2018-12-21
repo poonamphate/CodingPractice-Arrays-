@@ -1,0 +1,42 @@
+//https://www.geeksforgeeks.org/minimum-swaps-required-bring-elements-less-equal-k-together/
+/* 
+Given an array of n positive integers and a number k. Find the minimum number of swaps required to bring all the numbers less than or equal to k together.
+
+Input:  arr[] = {2, 1, 5, 6, 3}, k = 3
+Output: 1
+
+Explanation: 
+To bring elements 2, 1, 3 together, swap 
+element '5' with '3' such that final array
+will be-
+arr[] = {2, 1, 3, 6, 5}
+*/
+
+public class MinSwap {
+
+   public static void main(String []args) {
+      int[] arr = {2, 7, 9, 5, 8, 7, 4};
+      int k = 5;
+      
+      findSwap(arr, k);
+   }
+   
+   static void findSwap(int[] arr, int k){
+       int j = 0, i=0, count=0;
+       int n = arr.length;
+       
+       while(i < n){
+          if(arr[i] <= k){
+              if(i - j > 1){
+                count++;
+              }
+                j = i;
+                i++;
+          } 
+          else{
+              i++;
+          }
+       }
+       System.out.println("number of swaps required = "+count);
+   }
+}
