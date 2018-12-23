@@ -1,0 +1,35 @@
+//https://www.geeksforgeeks.org/rearrange-array-order-smallest-largest-2nd-smallest-2nd-largest/
+/*
+Rearrange an array in order – smallest, largest, 2nd smallest, 2nd largest, ..
+*/
+
+import java.util.Arrays;
+
+public class RearrangeArrInOrder {
+
+   public static void main(String []args) {
+       int[] arr = {5, 8, 1, 4, 2, 9, 3, 7, 6};
+       rearrangeArr(arr);
+   }
+   
+   static void rearrangeArr(int[] arr){
+       Arrays.sort(arr);
+       System.out.println(Arrays.toString(arr));
+       
+       int start = 0;
+       int end = arr.length-1;
+       int[] newArr = new int[arr.length];
+       
+       for(int i = 0; i<arr.length; i++){
+           if(i%2 == 0){
+                newArr[i] = arr[start];
+                start++;
+           }
+           else{
+               newArr[i] = arr[end];
+                end--;
+           }
+       }
+        System.out.println(Arrays.toString(newArr));
+   }
+}
