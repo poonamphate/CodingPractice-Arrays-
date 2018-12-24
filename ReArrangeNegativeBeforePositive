@@ -1,0 +1,28 @@
+//https://www.geeksforgeeks.org/rearrange-positive-and-negative-numbers/
+/*Given an array of positive and negative numbers, arrange them such that all negative integers appear 
+before all the positive integers in the array without using any additional data structure 
+like hash table, arrays, etc. The order of appearance should be maintained.*/
+
+import java.util.Arrays;
+public class ReArrangeNegativeBeforePositive {
+
+   public static void main(String []args) {
+    //   int[] arr = {12, 11, -13, -5, 6, -7, 5, -3, -6};
+      int[] arr = {-13, -5, -7, -3, -6};
+      reArrage(arr);
+   }
+   
+   static void reArrage(int[] arr){
+       int j = 0;
+       int temp;
+       for(int i = 0; i<arr.length; i++){
+           if(arr[i] < 0){
+               temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+               j++;
+           }
+       }
+       System.out.println(Arrays.toString(arr));
+   }
+}
