@@ -1,0 +1,36 @@
+//https://www.geeksforgeeks.org/rearrange-array-even-index-elements-smaller-odd-index-elements-greater/
+/*
+Rearrange array such that even index elements are smaller and odd index elements are greater
+Given an array, rearrange the array such that :
+
+If index i is even, arr[i] <= arr[i+1]
+If index i is odd, arr[i] >= arr[i+1]
+*/
+
+import java.util.Arrays;
+public class EvenIndexSmallerThanOdd{
+
+   public static void main(String []args) {
+      int[] arr = { 2, 3, 4, 5 };
+    
+      reArrage(arr);
+   }
+   
+   static void reArrage(int[] arr){
+       int i, temp;
+       
+       for(i = 0; i<arr.length-1; i++){
+           if(i%2 == 0 && arr[i] > arr[i+1]){
+               temp = arr[i];
+               arr[i] = arr[i+1];
+               arr[i+1] = temp;
+           }
+           if(i%2 != 0 && arr[i] < arr[i+1]){
+               temp = arr[i];
+               arr[i] = arr[i+1];
+               arr[i+1] = temp;
+           }
+       }
+       System.out.println(Arrays.toString(arr));
+   }
+}
