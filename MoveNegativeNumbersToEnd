@@ -1,0 +1,42 @@
+//Move all negative elements to end in order with extra space allowed
+/*Given an unsorted array of both negative and positive integer. 
+The task is place all negative element at the end of array without changing the order of positive element 
+and negative element.
+
+Examples:
+Input : arr[] = {1, -1, 3, 2, -7, -5, 11, 6 }
+Output : 1  3  2  11  6  -1  -7  -5
+
+*/
+
+import java.util.Arrays;
+public class MoveNegativeNumbersToEnd {
+
+   public static void main(String []args) {
+    
+      int[] arr = {1, -1, 3, 2, -7, -5, 11, 6};
+      moveNumbers(arr);
+   }
+   
+   static void moveNumbers(int[] arr){
+       int[] newArr = new int[arr.length];
+       int i, j = 0;
+       
+       for(i = 0; i<arr.length; i++){
+           if(arr[i] >= 0){
+               newArr[j] = arr[i];
+               j++;
+           }
+       }
+       System.out.println(Arrays.toString(newArr));
+          
+        
+        for(i = 0; i<arr.length; i++){
+            if(arr[i] < 0){
+                newArr[j] = arr[i];
+                j++;
+            }
+        }    
+        System.out.println(Arrays.toString(newArr));
+   }
+}
