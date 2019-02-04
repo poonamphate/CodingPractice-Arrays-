@@ -1,0 +1,28 @@
+//An array contains n numbers ranging from 0 to n-2. There is exactly one number is repeated in the array. Write a program to find that duplicate number. 
+
+import java.util.Arrays;
+ 
+public class DuplicateNumber{
+    public static void main(String[] args){
+        // int[] arr = {1,2,3,3,4,5};
+        int[] arr = {};
+        int count = 5;
+        findDupNumber(arr, count);
+    }
+    
+    static void findDupNumber(int[] arr, int count){
+        if(arr == null || arr.length == 0){
+            return;
+        }
+        int actualSum = 0, expectedSum;
+        int n = arr.length-1;
+        
+        for(int i = 0; i<arr.length; i++){
+            actualSum = actualSum+arr[i];
+        }
+        
+        expectedSum = n*(n+1)/2;
+        int dupNum = actualSum - expectedSum;
+        System.out.println("Duplicate number is = "+dupNum);
+    }
+}
